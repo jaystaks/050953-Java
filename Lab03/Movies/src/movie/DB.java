@@ -45,8 +45,6 @@ public class DB {
 
 //Navigation Users * -----------------------------------------------------------------------------------------------------------------------	
 
-//Navigation Users.New_user	--------------------------------------------------------------------------------------------------------------------
-
     protected static String makingUserID() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
@@ -64,10 +62,10 @@ public class DB {
 
         String id_korisnika = makingUserID();
 
-        String sql = "INSERT INTO Korisnik (ime,id_korisnika,prezime,jmbg,adresa,phone,email) VALUES('"+Front.firstnameTF.getText()+"','"+id_korisnika+"','"+Front.lastnameTF.getText()+"','"+Front.ssnTF.getText()+"','"+Front.adressTF.getText()+"','"+Front.phone_numberTF.getText()+"','"+Front.emailTF.getText()+"')";
+        String sql = "INSERT INTO Korisnik (ime,id_korisnika,prezime,jmbg,address,phone,email) VALUES('"+Front.nameTF.getText()+"','"+id_korisnika+"','"+Front.phone_numberTF.getText()+"','"+Front.emailTF.getText()+"')";
 
 
-        if( Front.firstnameTF.getText().equals("") || Front.lastnameTF.getText().equals("") || Front.ssnTF.getText().equals("") || Front.adressTF.getText().equals("") || Front.phone_numberTF.getText().equals("") ){
+        if( Front.nameTF.getText().equals("") || Front.phone_numberTF.getText().equals("") ){
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Notification");
             alert.setHeaderText(null);
@@ -86,7 +84,7 @@ public class DB {
             }
 
             try {
-                String sqlUzimiID = "SELECT * FROM Korisnik WHERE jmbg='" + Front.ssnTF.getText() + "';";
+                String sqlUzimiID = "SELECT * FROM Korisnik WHERE jmbg='" + "';";
 
                 Connection conn = this.connectionWithDatabase();
                 Statement stmt  = conn.createStatement();
@@ -105,10 +103,7 @@ public class DB {
                 alert.setContentText("You have successfully added a new user " + imeiprezime +".\nHis ID is: "  +idKorisnika);
                 alert.showAndWait();
 
-                Front.firstnameTF.clear();
-                Front.lastnameTF.clear();
-                Front.ssnTF.clear();
-                Front.adressTF.clear();
+                Front.nameTF.clear();
                 Front.phone_numberTF.clear();
                 Front.emailTF.clear();
 
@@ -135,55 +130,33 @@ public class DB {
                 Front.idTF2.setDisable(true);
                 Front.searchButton2.setDisable(true);
 
-                Front.firstnameTF2.setDisable(false);
-                Front.lastnameTF2.setDisable(false);
-                Front.ssnTF2.setDisable(false);
-                Front.adressTF2.setDisable(false);
+                Front.nameTF2.setDisable(false);
                 Front.phone_numberTF2.setDisable(false);
                 Front.emailTF2.setDisable(false);
-                Front.firstnameL2.setDisable(false);
-                Front.lastnameL2.setDisable(false);
-                Front.ssnL2.setDisable(false);
-                Front.adressL2.setDisable(false);
+                Front.nameL2.setDisable(false);
                 Front.phone_numberL2.setDisable(false);
                 Front.emailL2.setDisable(false);
                 Front.editButton2.setDisable(false);
                 Front.changeUserButton2.setDisable(false);
 
-                Front.firstnameTF2.setText(rs.getString("ime"));
-                Front.lastnameTF2.setText(rs.getString("prezime"));
-                Front.ssnTF2.setText(rs.getString("jmbg"));
-                Front.adressTF2.setText(rs.getString("adresa"));
+                Front.nameTF2.setText(rs.getString("ime"));
                 Front.phone_numberTF2.setText(rs.getString("phone"));
                 Front.emailTF2.setText(rs.getString("email"));
 
 
-                Front.firstnameTF2.setStyle(null);
-                Front.lastnameTF2.setStyle(null);
-                Front.ssnTF2.setStyle(null);
-                Front.adressTF2.setStyle(null);
+                Front.nameTF2.setStyle(null);
                 Front.phone_numberTF2.setStyle(null);
                 Front.emailTF2.setStyle(null);
                 Front.editButton2.setStyle(null);
             }
             else{
-                Front.firstnameTF2.clear();
-                Front.lastnameTF2.clear();
-                Front.ssnTF2.clear();
-                Front.adressTF2.clear();
+                Front.nameTF2.clear();
                 Front.phone_numberTF2.clear();
                 Front.emailTF2.clear();
-
-                Front.firstnameTF2.setDisable(true);
-                Front.lastnameTF2.setDisable(true);
-                Front.ssnTF2.setDisable(true);
-                Front.adressTF2.setDisable(true);
+                Front.nameTF2.setDisable(true);
                 Front.phone_numberTF2.setDisable(true);
                 Front.emailTF2.setDisable(true);
-                Front.firstnameL2.setDisable(true);
-                Front.lastnameL2.setDisable(true);
-                Front.ssnL2.setDisable(true);
-                Front.adressL2.setDisable(true);
+                Front.nameL2.setDisable(true);
                 Front.phone_numberL2.setDisable(true);
                 Front.emailL2.setDisable(true);
                 Front.editButton2.setDisable(true);
@@ -201,23 +174,14 @@ public class DB {
             System.out.println(e.getMessage());
 
             //This is if user put characters in ID
-            Front.firstnameTF2.clear();
-            Front.lastnameTF2.clear();
-            Front.ssnTF2.clear();
-            Front.adressTF2.clear();
+            Front.nameTF2.clear();
             Front.phone_numberTF2.clear();
             Front.emailTF2.clear();
 
-            Front.firstnameTF2.setDisable(true);
-            Front.lastnameTF2.setDisable(true);
-            Front.ssnTF2.setDisable(true);
-            Front.adressTF2.setDisable(true);
+            Front.nameTF2.setDisable(true);
             Front.phone_numberTF2.setDisable(true);
             Front.emailTF2.setDisable(true);
-            Front.firstnameL2.setDisable(true);
-            Front.lastnameL2.setDisable(true);
-            Front.ssnL2.setDisable(true);
-            Front.adressL2.setDisable(true);
+            Front.nameL2.setDisable(true);
             Front.phone_numberL2.setDisable(true);
             Front.emailL2.setDisable(true);
             Front.editButton2.setDisable(true);
@@ -240,23 +204,14 @@ public class DB {
         Front.searchButton2.setDisable(false);
 
         Front.idTF2.clear();
-        Front.firstnameTF2.clear();
-        Front.lastnameTF2.clear();
-        Front.ssnTF2.clear();
-        Front.adressTF2.clear();
+        Front.nameTF2.clear();
         Front.phone_numberTF2.clear();
         Front.emailTF2.clear();
 
-        Front.firstnameTF2.setDisable(true);
-        Front.lastnameTF2.setDisable(true);
-        Front.ssnTF2.setDisable(true);
-        Front.adressTF2.setDisable(true);
+        Front.nameTF2.setDisable(true);
         Front.phone_numberTF2.setDisable(true);
         Front.emailTF2.setDisable(true);
-        Front.firstnameL2.setDisable(true);
-        Front.lastnameL2.setDisable(true);
-        Front.ssnL2.setDisable(true);
-        Front.adressL2.setDisable(true);
+        Front.nameL2.setDisable(true);
         Front.phone_numberL2.setDisable(true);
         Front.emailL2.setDisable(true);
         Front.editButton2.setDisable(true);
@@ -266,9 +221,9 @@ public class DB {
 
     public void editUser(){
 
-        String sql = "UPDATE Korisnik SET ime='"+Front.firstnameTF2.getText()+"',prezime='"+Front.lastnameTF2.getText()+"',jmbg="+Front.ssnTF2.getText()+",adresa='"+Front.adressTF2.getText()+"',phone="+Front.phone_numberTF2.getText()+",email='"+Front.emailTF2.getText()+"' WHERE id_korisnika='"+Front.idTF2.getText()+"';";
+        String sql = "UPDATE Korisnik SET ime='"+Front.nameTF2.getText()+"',prezime='"+"',phone="+Front.phone_numberTF2.getText()+",email='"+Front.emailTF2.getText()+"' WHERE id_korisnika='"+Front.idTF2.getText()+"';";
 
-        if( Front.firstnameTF2.getText().equals("") || Front.lastnameTF2.getText().equals("") || Front.ssnTF2.getText().equals("") || Front.adressTF2.getText().equals("") || Front.phone_numberTF2.equals("") ){
+        if( Front.nameTF2.getText().equals("") || Front.phone_numberTF2.equals("") ){
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Notification");
             alert.setHeaderText(null);
@@ -299,23 +254,14 @@ public class DB {
             Front.searchButton2.setDisable(false);
 
             Front.idTF2.clear();
-            Front.firstnameTF2.clear();
-            Front.lastnameTF2.clear();
-            Front.ssnTF2.clear();
-            Front.adressTF2.clear();
+            Front.nameTF2.clear();
             Front.phone_numberTF2.clear();
             Front.emailTF2.clear();
 
-            Front.firstnameTF2.setDisable(true);
-            Front.lastnameTF2.setDisable(true);
-            Front.ssnTF2.setDisable(true);
-            Front.adressTF2.setDisable(true);
+            Front.nameTF2.setDisable(true);
             Front.phone_numberTF2.setDisable(true);
             Front.emailTF2.setDisable(true);
-            Front.firstnameL2.setDisable(true);
-            Front.lastnameL2.setDisable(true);
-            Front.ssnL2.setDisable(true);
-            Front.adressL2.setDisable(true);
+            Front.nameL2.setDisable(true);
             Front.phone_numberL2.setDisable(true);
             Front.emailL2.setDisable(true);
             Front.editButton2.setDisable(true);
@@ -337,45 +283,27 @@ public class DB {
             ResultSet rs = stmt.executeQuery(sql);
 
             if(rs.next()){
-                Front.firstnameTF3.setDisable(false);
-                Front.lastnameTF3.setDisable(false);
-                Front.ssnTF3.setDisable(false);
-                Front.adressTF3.setDisable(false);
+                Front.nameTF3.setDisable(false);
                 Front.phone_numberTF3.setDisable(false);
                 Front.emailTF3.setDisable(false);
-                Front.firstnameL3.setDisable(false);
-                Front.lastnameL3.setDisable(false);
-                Front.ssnL3.setDisable(false);
-                Front.adressL3.setDisable(false);
+                Front.nameL3.setDisable(false);
                 Front.phone_numberL3.setDisable(false);
                 Front.emailL3.setDisable(false);
 
 
-                Front.firstnameTF3.setText(rs.getString("ime"));
-                Front.lastnameTF3.setText(rs.getString("prezime"));
-                Front.ssnTF3.setText(rs.getString("jmbg"));
-                Front.adressTF3.setText(rs.getString("adresa"));
+                Front.nameTF3.setText(rs.getString("ime"));
                 Front.phone_numberTF3.setText(rs.getString("phone"));
                 Front.emailTF3.setText(rs.getString("email"));
             }else{
 
-                Front.firstnameTF3.clear();
-                Front.lastnameTF3.clear();
-                Front.ssnTF3.clear();
-                Front.adressTF3.clear();
+                Front.nameTF3.clear();
                 Front.phone_numberTF3.clear();
                 Front.emailTF3.clear();
 
-                Front.firstnameTF3.setDisable(true);
-                Front.lastnameTF3.setDisable(true);
-                Front.ssnTF3.setDisable(true);
-                Front.adressTF3.setDisable(true);
+                Front.nameTF3.setDisable(true);
                 Front.phone_numberTF3.setDisable(true);
                 Front.emailTF3.setDisable(true);
-                Front.firstnameL3.setDisable(true);
-                Front.lastnameL3.setDisable(true);
-                Front.ssnL3.setDisable(true);
-                Front.adressL3.setDisable(true);
+                Front.nameL3.setDisable(true);
                 Front.phone_numberL3.setDisable(true);
                 Front.emailL3.setDisable(true);
 
@@ -411,26 +339,16 @@ public class DB {
                 Front.idTF4.setDisable(true);
                 Front.searchButton4.setDisable(true);
 
-                Front.firstnameTF4.setDisable(false);
-                Front.lastnameTF4.setDisable(false);
-                Front.ssnTF4.setDisable(false);
-                Front.adressTF4.setDisable(false);
+                Front.nameTF4.setDisable(false);
                 Front.phone_numberTF4.setDisable(false);
                 Front.emailTF4.setDisable(false);
-                Front.firstnameL4.setDisable(false);
-                Front.lastnameL4.setDisable(false);
-                Front.ssnL4.setDisable(false);
-                Front.adressL4.setDisable(false);
-                Front.phone_numberL4.setDisable(false);
+                Front.nameL4.setDisable(false);
                 Front.emailL4.setDisable(false);
                 Front.deleteButton4.setDisable(false);
                 Front.changeUserButton4.setDisable(false);
 
 
-                Front.firstnameTF4.setText(rs.getString("ime"));
-                Front.lastnameTF4.setText(rs.getString("prezime"));
-                Front.ssnTF4.setText(rs.getString("jmbg"));
-                Front.adressTF4.setText(rs.getString("adresa"));
+                Front.nameTF4.setText(rs.getString("ime"));
                 Front.phone_numberTF4.setText(rs.getString("phone"));
                 Front.emailTF4.setText(rs.getString("email"));
             }
@@ -438,23 +356,14 @@ public class DB {
                 Front.idL4.setDisable(false);
                 Front.idTF4.setDisable(false);
                 Front.searchButton4.setDisable(false);
-                Front.firstnameTF4.clear();
-                Front.lastnameTF4.clear();
-                Front.ssnTF4.clear();
-                Front.adressTF4.clear();
+                Front.nameTF4.clear();
                 Front.phone_numberTF4.clear();
                 Front.emailTF4.clear();
 
-                Front.firstnameTF4.setDisable(true);
-                Front.lastnameTF4.setDisable(true);
-                Front.ssnTF4.setDisable(true);
-                Front.adressTF4.setDisable(true);
+                Front.nameTF4.setDisable(true);
                 Front.phone_numberTF4.setDisable(true);
                 Front.emailTF4.setDisable(true);
-                Front.firstnameL4.setDisable(true);
-                Front.lastnameL4.setDisable(true);
-                Front.ssnL4.setDisable(true);
-                Front.adressL4.setDisable(true);
+                Front.nameL4.setDisable(true);
                 Front.phone_numberL4.setDisable(true);
                 Front.emailL4.setDisable(true);
                 Front.deleteButton4.setDisable(true);
@@ -476,23 +385,14 @@ public class DB {
             Front.idL4.setDisable(false);
             Front.idTF4.setDisable(false);
             Front.searchButton4.setDisable(false);
-            Front.firstnameTF4.clear();
-            Front.lastnameTF4.clear();
-            Front.ssnTF4.clear();
-            Front.adressTF4.clear();
+            Front.nameTF4.clear();
             Front.phone_numberTF4.clear();
             Front.emailTF4.clear();
 
-            Front.firstnameTF4.setDisable(true);
-            Front.lastnameTF4.setDisable(true);
-            Front.ssnTF4.setDisable(true);
-            Front.adressTF4.setDisable(true);
+            Front.nameTF4.setDisable(true);
             Front.phone_numberTF4.setDisable(true);
             Front.emailTF4.setDisable(true);
-            Front.firstnameL4.setDisable(true);
-            Front.lastnameL4.setDisable(true);
-            Front.ssnL4.setDisable(true);
-            Front.adressL4.setDisable(true);
+            Front.nameL4.setDisable(true);
             Front.phone_numberL4.setDisable(true);
             Front.emailL4.setDisable(true);
             Front.deleteButton4.setDisable(true);
@@ -516,23 +416,14 @@ public class DB {
         Front.searchButton4.setDisable(false);
 
         Front.idTF4.clear();
-        Front.firstnameTF4.clear();
-        Front.lastnameTF4.clear();
-        Front.ssnTF4.clear();
-        Front.adressTF4.clear();
+        Front.nameTF4.clear();
         Front.phone_numberTF4.clear();
         Front.emailTF4.clear();
 
-        Front.firstnameTF4.setDisable(true);
-        Front.lastnameTF4.setDisable(true);
-        Front.ssnTF4.setDisable(true);
-        Front.adressTF4.setDisable(true);
+        Front.nameTF4.setDisable(true);
         Front.phone_numberTF4.setDisable(true);
         Front.emailTF4.setDisable(true);
-        Front.firstnameL4.setDisable(true);
-        Front.lastnameL4.setDisable(true);
-        Front.ssnL4.setDisable(true);
-        Front.adressL4.setDisable(true);
+        Front.nameL4.setDisable(true);
         Front.phone_numberL4.setDisable(true);
         Front.emailL4.setDisable(true);
         Front.deleteButton4.setDisable(true);
@@ -574,10 +465,7 @@ public class DB {
         }
 
         Front.idTF4.clear();
-        Front.firstnameTF4.clear();
-        Front.lastnameTF4.clear();
-        Front.ssnTF4.clear();
-        Front.adressTF4.clear();
+        Front.nameTF4.clear();
         Front.phone_numberTF4.clear();
         Front.emailTF4.clear();
 
@@ -585,16 +473,10 @@ public class DB {
         Front.idTF4.setDisable(false);
         Front.searchButton4.setDisable(false);
 
-        Front.firstnameTF4.setDisable(true);
-        Front.lastnameTF4.setDisable(true);
-        Front.ssnTF4.setDisable(true);
-        Front.adressTF4.setDisable(true);
+        Front.nameTF4.setDisable(true);
         Front.phone_numberTF4.setDisable(true);
         Front.emailTF4.setDisable(true);
-        Front.firstnameL4.setDisable(true);
-        Front.lastnameL4.setDisable(true);
-        Front.ssnL4.setDisable(true);
-        Front.adressL4.setDisable(true);
+        Front.nameL4.setDisable(true);
         Front.phone_numberL4.setDisable(true);
         Front.emailL4.setDisable(true);
         Front.deleteButton4.setDisable(true);
