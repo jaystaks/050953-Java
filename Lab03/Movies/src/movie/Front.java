@@ -39,10 +39,7 @@ public class Front extends Application {
     static DB object_Back = new DB();
 
     //Navigation Users.New_user
-    static TextField firstnameTF;
-    static TextField lastnameTF;
-    static TextField ssnTF;
-    static TextField adressTF;
+    static TextField nameTF;
     static TextField phone_numberTF;
     static TextField emailTF;
 
@@ -50,14 +47,7 @@ public class Front extends Application {
     static Label idL2;
     static TextField idTF2;
     static Button searchButton2;
-    static Label firstnameL2;
-    static TextField firstnameTF2;
-    static Label lastnameL2;
-    static TextField lastnameTF2;
-    static Label ssnL2;
-    static TextField ssnTF2;
-    static Label adressL2;
-    static TextField adressTF2;
+    static Label nameL2;
     static Label phone_numberL2;
     static TextField phone_numberTF2;
     static Label emailL2;
@@ -67,14 +57,8 @@ public class Front extends Application {
 
     //Navigation Users.Show_user
     static TextField idTF3;
-    static Label firstnameL3;
-    static TextField firstnameTF3;
-    static Label lastnameL3;
-    static TextField lastnameTF3;
-    static Label ssnL3;
-    static TextField ssnTF3;
-    static Label adressL3;
-    static TextField adressTF3;
+    static Label nameL3;
+    static TextField nameTF3;
     static Label phone_numberL3;
     static TextField phone_numberTF3;
     static Label emailL3;
@@ -84,14 +68,8 @@ public class Front extends Application {
     static Button searchButton4;
     static Label idL4;
     static TextField idTF4;
-    static Label firstnameL4;
-    static TextField firstnameTF4;
-    static Label lastnameL4;
-    static TextField lastnameTF4;
-    static Label ssnL4;
-    static TextField ssnTF4;
-    static Label adressL4;
-    static TextField adressTF4;
+    static Label nameL4;
+    static TextField nameTF4;
     static Label phone_numberL4;
     static TextField phone_numberTF4;
     static Label emailL4;
@@ -156,7 +134,7 @@ public class Front extends Application {
     static PasswordField properties_newPW;
     static PasswordField properties_repeat_newPF;
 
-    static String securityCode = object_Back.returnBackCurrentSecurityCode();
+    //static String securityCode = object_Back.returnBackCurrentSecurityCode();
     static String background = "";
 
 
@@ -227,21 +205,9 @@ public class Front extends Application {
             Label addUserL = new Label("New user");
             addUserL.setStyle("-fx-font-size:21;-fx-text-fill: white");
 
-            Label firstnameL = new Label("First name*");
-            firstnameTF = new TextField();
-            firstnameL.setStyle("-fx-text-fill: white");
-
-            Label lastnameL = new Label("Last name*");
-            lastnameL.setStyle("-fx-text-fill: white");
-            lastnameTF = new TextField();
-
-            Label ssnL = new Label("SSN*");
-            ssnL.setStyle("-fx-text-fill: white");
-            ssnTF = new TextField();
-
-            Label adressL = new Label("Adress*");
-            adressL.setStyle("-fx-text-fill: white");
-            adressTF = new TextField();
+            Label nameL = new Label("Name*");
+            nameTF = new TextField();
+            nameL.setStyle("-fx-text-fill: white");
 
             Label phone_numberL = new Label("Phone number*");
             phone_numberL.setStyle("-fx-text-fill: white");
@@ -255,14 +221,8 @@ public class Front extends Application {
 
             GridPane new_userContainer = new GridPane();
             new_userContainer.add(addUserL, 0, 0, 2, 1);
-            new_userContainer.add(firstnameL, 0, 1);
-            new_userContainer.add(firstnameTF, 1, 1);
-            new_userContainer.add(lastnameL, 0, 2);
-            new_userContainer.add(lastnameTF, 1, 2);
-            new_userContainer.add(ssnL, 0, 3);
-            new_userContainer.add(ssnTF, 1, 3);
-            new_userContainer.add(adressL, 0, 4);
-            new_userContainer.add(adressTF, 1, 4);
+            new_userContainer.add(nameL, 0, 1);
+            new_userContainer.add(nameTF, 1, 1);
             new_userContainer.add(phone_numberL, 0, 5);
             new_userContainer.add(phone_numberTF, 1, 5);
             new_userContainer.add(emailL, 0, 6);
@@ -272,7 +232,7 @@ public class Front extends Application {
             new_userContainer.setVgap(8);
 
             //Home page --------------------------------------------------------------------------------------------------------------------
-            Label homeText = new Label("Welcome in Movie Rental System!Select the desired function.");
+            Label homeText = new Label("Welcome to Movie Rental System!Select the desired function.");
             homeText.setStyle("-fx-font-size:21;-fx-text-fill: white");
             StackPane homeTextContainer = new StackPane(homeText);
 
@@ -293,29 +253,11 @@ public class Front extends Application {
 
             searchButton2 = new Button("Search");
 
-            firstnameL2 = new Label("First name*");
-            firstnameL2.setStyle("-fx-text-fill: white");
-            firstnameL2.setDisable(true);
-            firstnameTF2 = new TextField();
-            firstnameTF2.setDisable(true);
-
-            lastnameL2 = new Label("Last name*");
-            lastnameL2.setStyle("-fx-text-fill: white");
-            lastnameL2.setDisable(true);
-            lastnameTF2 = new TextField();
-            lastnameTF2.setDisable(true);
-
-            ssnL2 = new Label("SSN*");
-            ssnL2.setStyle("-fx-text-fill: white");
-            ssnL2.setDisable(true);
-            ssnTF2 = new TextField();
-            ssnTF2.setDisable(true);
-
-            adressL2 = new Label("Adress*");
-            adressL2.setStyle("-fx-text-fill: white");
-            adressL2.setDisable(true);
-            adressTF2 = new TextField();
-            adressTF2.setDisable(true);
+            nameL2 = new Label("Name*");
+            nameL2.setStyle("-fx-text-fill: white");
+            nameL2.setDisable(true);
+            nameTF2 = new TextField();
+            nameTF2.setDisable(true);
 
             phone_numberL2 = new Label("Phone number*");
             phone_numberL2.setStyle("-fx-text-fill: white");
@@ -341,14 +283,7 @@ public class Front extends Application {
             edit_userContainer.add(idL2, 0, 1);
             edit_userContainer.add(idTF2, 1, 1);
             edit_userContainer.add(searchButton2, 2, 1);
-            edit_userContainer.add(firstnameL2, 0, 2);
-            edit_userContainer.add(firstnameTF2, 1, 2);
-            edit_userContainer.add(lastnameL2, 0, 3);
-            edit_userContainer.add(lastnameTF2, 1, 3);
-            edit_userContainer.add(ssnL2, 0, 4);
-            edit_userContainer.add(ssnTF2, 1, 4);
-            edit_userContainer.add(adressL2, 0, 5);
-            edit_userContainer.add(adressTF2, 1, 5);
+            edit_userContainer.add(nameL2, 0, 2);
             edit_userContainer.add(phone_numberL2, 0, 6);
             edit_userContainer.add(phone_numberTF2, 1, 6);
             edit_userContainer.add(emailL2, 0, 7);
@@ -369,33 +304,12 @@ public class Front extends Application {
 
             Button searchButton3 = new Button("Search");
 
-            firstnameL3 = new Label("First name*");
-            firstnameL3.setStyle("-fx-text-fill: white");
-            firstnameL3.setDisable(true);
-            firstnameTF3 = new TextField();
-            firstnameTF3.setDisable(true);
-            firstnameTF3.setEditable(false);
-
-            lastnameL3 = new Label("Last name*");
-            lastnameL3.setStyle("-fx-text-fill: white");
-            lastnameL3.setDisable(true);
-            lastnameTF3 = new TextField();
-            lastnameTF3.setDisable(true);
-            lastnameTF3.setEditable(false);
-
-            ssnL3 = new Label("SSN*");
-            ssnL3.setStyle("-fx-text-fill: white");
-            ssnL3.setDisable(true);
-            ssnTF3 = new TextField();
-            ssnTF3.setDisable(true);
-            ssnTF3.setEditable(false);
-
-            adressL3 = new Label("Adress*");
-            adressL3.setStyle("-fx-text-fill: white");
-            adressL3.setDisable(true);
-            adressTF3 = new TextField();
-            adressTF3.setDisable(true);
-            adressTF3.setEditable(false);
+            nameL3 = new Label("Name*");
+            nameL3.setStyle("-fx-text-fill: white");
+            nameL3.setDisable(true);
+            nameTF3 = new TextField();
+            nameTF3.setDisable(true);
+            nameTF3.setEditable(false);
 
             phone_numberL3 = new Label("Phone number*");
             phone_numberL3.setStyle("-fx-text-fill: white");
@@ -417,14 +331,8 @@ public class Front extends Application {
             show_userContainer.add(idL3, 0, 1);
             show_userContainer.add(idTF3, 1, 1);
             show_userContainer.add(searchButton3, 2, 1);
-            show_userContainer.add(firstnameL3, 0, 2);
-            show_userContainer.add(firstnameTF3, 1, 2);
-            show_userContainer.add(lastnameL3, 0, 3);
-            show_userContainer.add(lastnameTF3, 1, 3);
-            show_userContainer.add(ssnL3, 0, 4);
-            show_userContainer.add(ssnTF3, 1, 4);
-            show_userContainer.add(adressL3, 0, 5);
-            show_userContainer.add(adressTF3, 1, 5);
+            show_userContainer.add(nameL3, 0, 2);
+            show_userContainer.add(nameTF3, 1, 2);
             show_userContainer.add(phone_numberL3, 0, 6);
             show_userContainer.add(phone_numberTF3, 1, 6);
             show_userContainer.add(emailL3, 0, 7);
@@ -443,33 +351,12 @@ public class Front extends Application {
 
             searchButton4 = new Button("Pretraži");
 
-            firstnameL4 = new Label("First name*");
-            firstnameL4.setStyle("-fx-text-fill: white");
-            firstnameL4.setDisable(true);
-            firstnameTF4 = new TextField();
-            firstnameTF4.setDisable(true);
-            firstnameTF4.setEditable(false);
-
-            lastnameL4 = new Label("Last name*");
-            lastnameL4.setStyle("-fx-text-fill: white");
-            lastnameL4.setDisable(true);
-            lastnameTF4 = new TextField();
-            lastnameTF4.setDisable(true);
-            lastnameTF4.setEditable(false);
-
-            ssnL4 = new Label("SSN*");
-            ssnL4.setStyle("-fx-text-fill: white");
-            ssnL4.setDisable(true);
-            ssnTF4 = new TextField();
-            ssnTF4.setDisable(true);
-            ssnTF4.setEditable(false);
-
-            adressL4 = new Label("Adress*");
-            adressL4.setStyle("-fx-text-fill: white");
-            adressL4.setDisable(true);
-            adressTF4 = new TextField();
-            adressTF4.setDisable(true);
-            adressTF4.setEditable(false);
+            nameL4 = new Label("Name*");
+            nameL4.setStyle("-fx-text-fill: white");
+            nameL4.setDisable(true);
+            nameTF4 = new TextField();
+            nameTF4.setDisable(true);
+            nameTF4.setEditable(false);
 
             phone_numberL4 = new Label("Phone number*");
             phone_numberL4.setStyle("-fx-text-fill: white");
@@ -497,14 +384,8 @@ public class Front extends Application {
             delete_userContainer.add(idL4, 0, 1);
             delete_userContainer.add(idTF4, 1, 1);
             delete_userContainer.add(searchButton4, 2, 1);
-            delete_userContainer.add(firstnameL4, 0, 2);
-            delete_userContainer.add(firstnameTF4, 1, 2);
-            delete_userContainer.add(lastnameL4, 0, 3);
-            delete_userContainer.add(lastnameTF4, 1, 3);
-            delete_userContainer.add(ssnL4, 0, 4);
-            delete_userContainer.add(ssnTF4, 1, 4);
-            delete_userContainer.add(adressL4, 0, 5);
-            delete_userContainer.add(adressTF4, 1, 5);
+            delete_userContainer.add(nameL4, 0, 2);
+            delete_userContainer.add(nameTF4, 1, 2);
             delete_userContainer.add(phone_numberL4, 0, 6);
             delete_userContainer.add(phone_numberTF4, 1, 6);
             delete_userContainer.add(emailL4, 0, 7);
@@ -1447,7 +1328,6 @@ public class Front extends Application {
                 navigationBody.getChildren().add(1, about_authorContainer);
             });
 
-
 //Login page -------------------------------------------------------------------------------------------------------------------------------------
             Label security_codeL = new Label("Enter security code");
             security_codeL.setStyle("-fx-font-size:20;-fx-text-fill: white");
@@ -1533,7 +1413,6 @@ public class Front extends Application {
         }
 
     }
-
 
     public static void main(String[] args) {
 
